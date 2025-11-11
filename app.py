@@ -12,10 +12,10 @@ app.config['SECRET_KEY'] = 'secret!'
 def index():
     return redirect('/pag_inicial')
 
-
 @app.route('/pag_inicial')
 def home():
-    return render_template('Cadastrar.html')
+    return render_template('Pag_inicio.html')
+
 
 @app.route('/filmes')
 def get_filmes():
@@ -31,8 +31,7 @@ def get_filmes():
     finally:
         db_session.close()
 
-
-@app.route('/cadastrar_filme')
+@app.route('/cadastrar_filme', methods=['GET', 'POST'])
 def post_filme():
     db_session = local_secao()
     if request.method == 'POST':
@@ -50,8 +49,18 @@ def post_filme():
             flash("preencha o genero", "error")
         if not request.form('diretor'):
             flash("preencha o diretor", "error")
-
-
+        dados_filme = Filme(titulo=request.form['titulo'],tempo_duracao_min=request.form['duracao'],descricao=request.form['descricao'], trailer=request.form['trailer'],data_lancamento=request.form['lanamento'], id_genero=request.form['genero'],id_diretor=request.form['diretor'])
+        try:
+            db_session.add(dados_filme)
+            db_session.commit()
+            flash("Cadastrado com sucesso!", "success")
+            return redirect(url_for('/pag_inicial'))
+        except SQLAlchemyError as e:
+            print(f"Erro ao cadastrar pessoa: {e}")
+            db_session.rollback()
+        finally:
+            db_session.close()
+    return render_template('Cadastrar.html')
 
 
 if __name__ == '__main__':
