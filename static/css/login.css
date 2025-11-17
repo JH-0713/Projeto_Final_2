@@ -163,27 +163,16 @@ form button {
     transition: all 0.3s ease;
 }
 
-form button[type="submit"] {
+form button {
     background-color: #d9006c;
     color: white;
     border: none;
 }
 
-form button[type="submit"]:hover {
+form button:hover {
     background-color: #ff4d85;
 }
 
-form button[type="reset"] {
-    background-color: snow;
-    border: hotpink inset 2px;
-    color: #d9006c;
-}
-
-form button[type="reset"]:hover {
-    background-color: #d9006c;
-    color: white;
-    border: none;
-}
 
 /* Scrollbar minimal */
 textarea::-webkit-scrollbar {

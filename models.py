@@ -12,7 +12,6 @@ local_secao = sessionmaker(bind=engine)
 # Formato de Efetuação
 Base = declarative_base()
 
-
 # Base
 class Ator(Base):
     __tablename__ = 'atores'
@@ -47,7 +46,7 @@ class Filme(Base):
 
 
 class Usuario(Base):
-    __tablename__ = 'usuarios'
+    __tablename__ = 'usuario'
     id_usuario = Column(Integer, primary_key=True)
     nome_usuario = Column(String, nullable=False)
     email = Column(String, nullable=False)

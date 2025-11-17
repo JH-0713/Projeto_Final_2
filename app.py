@@ -16,8 +16,23 @@ def index():
 def cadastro():
     return render_template('Cadastrar.html')
 
+@app.route('/listar_cadastro')
+def get_cadastro():
+    db_session = local_secao()
+    try:
+        sql_conta = select(Usuario)
+        resultado = db_session.execute(sql_conta).scalars()
+        return render_template('Cadastrar.html', var_contas=resultado)
+    except SQLAlchemyError as e:
+        print(f"Erro na base de dados: {e}")
+    except Exception as ex:
+        print(f'Ocorreu um erro ao consultar pessoas: {ex}')
+    finally:
+        db_session.close()
+
+
 @app.route('/cadastrar_usuario', methods=['GET','POST'])
-def cadastrar_usuario():
+def cadastrar_user():
     db_session = local_secao()
     if request.method == 'POST':
         if not request.form['form_nome']:
@@ -31,13 +46,13 @@ def cadastrar_usuario():
             db_session.add(dados_usuario)
             db_session.commit()
             flash("Usuario cadastrado com sucesso", "success")
-            return redirect(url_for('cadastro'))
+            return redirect(url_for('get_cadastro'))
         except SQLAlchemyError as e:
             print(f'Erro ao cadastrar usuario:{e}')
             db_session.rollback()
         finally:
             db_session.close()
-    return redirect('Home.html')
+    return render_template('Cadastrar.html')
 
 @app.route('/incio')
 def home():
