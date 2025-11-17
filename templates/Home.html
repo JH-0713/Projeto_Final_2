@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<header class="header">
+    <div class="titulo">
+        <img src="/static/img/logo.png" alt="slogam" class="logo">
+    </div>
+
+    <nav class="lista">
+        <a href="{{url_for('home')}}">Filmes</a>
+        <a href="#">Genero</a>
+        <a href="#">Cadastrar</a>
+    </nav>
+    <div class="pesquisa">
+        <img src="/static/img/lupa.png" alt="lupa" class="lupa">
+        <input class="barra" type="text" placeholder="Pesquise...">
+    </div>
+</header>
+
+{% endblock conteudo %}
