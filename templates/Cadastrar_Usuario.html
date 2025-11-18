@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "base_log.html" %}
 
 {% block conteudo %}
-<div class="main">
+<div>
     <form class="form_cadastro"  action="{{url_for('cadastrar_user')}}" method="post">
         <div class="form_cadastro_title">
-            <h1>Cadastro de usuario</h1>
+            <h1>Cadastrar usuario:</h1>
             <label for="input_name">Nome</label>
             <input id="input_name" type="text" name="form_nome" placeholder="Digite seu nome" required>
 
@@ -14,7 +14,7 @@
             <label for="input_senha">Senha</label>
             <input id="input_senha" type="password" name="form_senha" placeholder="Digite sua senha" required>
             <div class="botoes">
-                <button>Login</button>
+                <a href="{{url_for('logar_usuario')}}"><button type="button">Login</button></a>
                 <button type="submit">Cadastrar</button>
             </div>
         </div>
