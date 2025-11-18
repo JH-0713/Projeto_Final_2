@@ -14,7 +14,7 @@ def index():
 
 
 @app.route('/pag_cadastro')
-def cadastro():
+def cadastro_usuario():
     return render_template('Cadastrar_Usuario.html')
 
 @app.route('/pag_login')
@@ -36,7 +36,7 @@ def get_genero():
     try:
         sql_genero = select(Genero)
         resultado = db_session.execute(sql_genero).scalars()
-        return render_template('Pag_Filmes.html', var_genero=resultado)
+        return render_template('Genero.html', var_genero=resultado)
     except SQLAlchemyError as e:
         print(f"Erro na base de dados: {e}")
     except Exception as ex:
@@ -111,6 +111,8 @@ def logar_usuario():
         finally:
             db_session.close()
     return render_template('Login.html')
+
+#@app.route('/cadastrar_filme', methods=['GET', 'POST'])
 
 if __name__ == '__main__':
     app.run(debug=True)

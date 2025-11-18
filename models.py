@@ -79,7 +79,7 @@ class Usuario(Base):
 class Genero(Base):
     __tablename__ = 'genero'
     id_genero = Column(Integer, primary_key=True)
-    genero = Column(String, nullable=False)
+    nome_genero = Column(String, nullable=False)
     def __repr__(self):
         return f'< Genero: {self.genero}>'
 

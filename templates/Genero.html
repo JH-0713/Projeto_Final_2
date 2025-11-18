@@ -5,10 +5,9 @@
     <div class="titulo">
         <img src="/static/img/logo.png" alt="slogam" class="logo">
     </div>
-
     <nav class="lista">
-        <a href="{{url_for('home')}}">Filmes</a>
-        <a href="{{#}}">Genero</a>
+        <a href="{{url_for('filmes')}}">Filmes</a>
+        <a href="#">Genero</a>
         <a href="#">Cadastrar</a>
     </nav>
     <div class="pesquisa">
@@ -19,7 +18,7 @@
 
 <div class="generos">
 {% for Genero in var_genero %}
-    <a href="{{url_for('')}}">{{Genero.genero}}</a>
+    <p>{{Genero.genero}}</p>
 {% endfor %}
 </div>
 
