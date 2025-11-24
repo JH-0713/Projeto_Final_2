@@ -1,0 +1,363 @@
+body {
+    background-color: #000;
+    font-family: "Roboto", "Arial", "sans-serif";
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+abbr {
+    text-decoration: none;
+    color: #ffffffcc;
+
+}
+
+.link_pag {
+    text-decoration: none;
+    color: #ffffffcc;
+}
+
+.link_pag:hover {
+    text-decoration: none;
+    color: #ff4d4d;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(139, 0, 0, 0.9);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.logo {
+    height: 60px;
+}
+
+/* Menu de navegação */
+.lista {
+    display: flex;
+    gap: 30px;
+}
+
+.lista a {
+    text-decoration: none;
+    color: #ffffffcc;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.lista a:hover {
+    color: #ff4d4d;
+    transform: scale(1.05);
+}
+
+/* Campo de pesquisa */
+.pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #222;
+    border-radius: 25px;
+    padding: 5px 15px;
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.pesquisa:hover {
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.6);
+}
+
+.barra {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    width: 180px;
+    font-size: 16px;
+}
+
+.barra::placeholder {
+    color: #aaa;
+}
+
+.lupa {
+    width: 22px;
+}
+
+/* Ícone do usuário */
+.user {
+    height: 32px;
+    width: auto;
+    margin-left: 15px;
+    opacity: 0.85;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.user:hover {
+    opacity: 1;
+    transform: scale(1.07);
+}
+
+/* ===== Formulário centralizado ===== */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 15px;
+}
+
+.fundo_formulario {
+    background: rgba(139, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.fundo_formulario:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 77, 77, 0.9);
+}
+
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin: 8px;
+    font-weight: 600;
+}
+
+form input, form textarea {
+    width: 92%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 14px;
+    resize: vertical;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    transition: all 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 12px 2px #ff4d4d;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+form select {
+    padding: 5px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 14px;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    transition: all 0.3s ease;
+}
+
+form select:focus {
+    outline: none;
+    box-shadow: 0 0 12px 2px #ff4d4d;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+form select option {
+    background: rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+/* ===== Botões ===== */
+button {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 15px;
+    background-color: #d9006c;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #ff4d85;
+    transform: scale(1.05);
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.botoes button {
+    width: 150px;
+}
+
+/* ===== Lista de gêneros alinhada à esquerda ===== */
+.genero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.genero_titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(139, 0, 0, 0.9);
+    font-size: 25px;
+}
+
+.genero_titulo h1 {
+    margin: 10px;
+}
+
+.genero_titulo a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.genero_titulo a:hover {
+    color: rgba(255, 77, 77, 0.8);
+}
+
+.escolha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px;
+}
+
+.escolha a {
+    display: flex;
+    padding: 10px 20px;
+    background: rgba(139, 0, 0, 0.9);
+    color: #ffffffcc;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
+    transition: all 0.3s ease;
+}
+
+.escolha a:hover {
+    background-color: #ff4d4d;
+    color: white;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.9);
+}
+
+.detalhes_filme {
+    display: flex;
+    justify-content: left;
+}
+
+.links_filmes a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.links_filmes a:hover{
+    color: rgba(255, 77, 77, 0.9);
+}
+
+.descricao {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 480px) {
+    .escolha {
+        max-width: 90%;
+    }
+
+    .escolha a {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.filmes_cadastrado {
+    display: flex;
+    background: rgba(139, 0, 0, 0.9);
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.filmes_cadastrado:hover {
+    display: flex;
+    align-items: center;
+}
+
+.filmes_cadastrado img {
+    display: flex;
+    border-radius: 5px;
+}
+
+
+/* ===== Responsividade ===== */
+@media (max-width: 480px) {
+    .formulario {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .lista {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .pesquisa {
+        width: 100%;
+    }
+
+    .barra {
+        width: 100%;
+    }
+
+    .user {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}

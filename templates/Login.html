@@ -2,15 +2,21 @@
 
 {% block conteudo %}
 <div class="main">
-    <form class="form_cadastro"  action="{{url_for('logar_usuario')}}" method="post">
+    <form class="form_cadastro" action="{{url_for('logar_usuario')}}" method="post">
         <div class="form_cadastro_title">
-            <h1>Logar usuario:</h1>
-            <label for="input_email">E-mail</label>
-            <input id="input_email" type="email" name="email_log" placeholder="Digite seu email" required>
-            <label for="input_senha">Senha</label>
-            <input id="input_senha" type="password" name="senha_log" placeholder="Digite sua senha" required>
+            <h1>Login de usuario</h1>
+            <label>
+                E-mail
+                <input type="email" name="email_log" placeholder="Digite seu email" required>
+            </label>
+            <label>
+                Senha
+                <input type="password" name="senha_log" placeholder="Digite sua senha" required>
+            </label>
             <div class="botoes">
-                <a href="{{url_for('cadastro_usuario')}}"><button type="button">Cadastrar</button></a>
+                <a href="{{url_for('cadastrar_user')}}">
+                    <button type="button">Cadastrar</button>
+                </a>
                 <button type="submit">Logar</button>
             </div>
         </div>

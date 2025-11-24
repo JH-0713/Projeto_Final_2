@@ -1,0 +1,12 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<div class="cards"> <!-- receitas -->
+    {% for filme in var_filmes %}
+    <div class="filmes_cadastrado"> <!-- alimentos -->
+        <a href="{{url_for('info_filme', var_id = filme.id_filme)}}"><img src="{{filme.imagem}}" alt="{{filme.nome_filme}}" width="245px" height="130px"></a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock conteudo %}

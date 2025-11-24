@@ -1,0 +1,40 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<!-- Cabeçalho igual ao da Home -->
+<div class="formulario">
+    <div class="fundo_formulario">
+        <h2>Cadastrar Filme</h2>
+        <form action="{{url_for('cadastrar_filme')}}" method="post">
+            <label>
+                Título:
+                <input type="text" name="form_titulo" placeholder="Título do filme" required>
+            </label>
+            <label>
+                Tempo de Duração:
+                <input type="text" name="form_duracao" placeholder="Ex: 2h 15min" required>
+            </label>
+            <label>
+                Descrição:
+                <textarea name="form_descricao" placeholder="Descreva o filme" rows="5" required></textarea>
+            </label>
+            <label>
+                Trailer (URL):
+                <input type="text" name="form_trailer" placeholder="Link do trailer">
+            </label>
+            <label>
+                Imagem (URL):
+                <input type="text" name="form_imagem" placeholder="Link do imagem">
+            </label>
+            <label>
+                Data de Lançamento:
+                <input type="text" name="form_lancamento" placeholder="Ex: XX/XX(ou nome do mes)/XXXX" required>
+            </label>
+            <div class="botoes">
+                <button type="submit">Cadastrar</button>
+                <button type="reset">Limpar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock conteudo %}

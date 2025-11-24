@@ -1,0 +1,15 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<div class="genero">
+    <div class="genero_titulo">
+        <h1>Generos</h1>
+        <a href="#">Adicionar Genero</a>
+    </div>
+</div>
+<div class="escolha">
+    {% for genero in var_generos %}
+    <a href="{{url_for('detalhar_genero', var_id = genero.id_genero)}}">{{genero.nome_genero}}</a>
+    {% endfor %}
+</div>
+{% endblock conteudo %}

@@ -1,0 +1,133 @@
+/* Fundo da página */
+html {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", "Arial", "sans-serif";
+    background: url('/static/img/tela_cadastro.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Overlay escuro sobre a imagem */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Formulário */
+.form_cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.form_cadastro_title {
+    background: rgba(139, 0, 0, 0.9); /* vermelho translúcido */
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.8);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form_cadastro_title:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 77, 77, 0.9);
+}
+
+/* Título */
+.form_cadastro_title h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: white;
+    font-size: 18px;
+}
+
+/* Inputs */
+input {
+    width: 92%;
+    padding: 8px 12px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 16px;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 12px 2px #ff4d4d;
+}
+
+button {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 15px;
+    background-color: #d9006c;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #ff4d85;
+    transform: scale(1.05);
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.botoes button {
+    width: 150px;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .form_cadastro {
+        width: 90%;
+        padding: 20px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 8px 0;
+    }
+}

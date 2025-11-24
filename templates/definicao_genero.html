@@ -1,0 +1,13 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<div>
+    {% for filme in var_filmes %}
+    <input type="checkbox" id="checks" name="{{var}}" value="Bike">
+    <label for="checks"> I have a bike</label>
+    Nome:{{filme.titulo}}
+    <a href="{{}}"></a>
+    {% endfor %}
+</div>
+
+{% endblock conteudo %}

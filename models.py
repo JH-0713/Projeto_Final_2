@@ -1,5 +1,4 @@
 # importar Biblioteca
-from jinja2.lexer import integer_re
 from sqlalchemy import Column, DateTime, func, ForeignKey, Integer, String, create_engine,Text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
@@ -52,7 +51,7 @@ class Filme(Base):
     descricao = Column(Text, nullable=False)
     trailer = Column(Text, nullable=False)
     imagem = Column(Text, nullable=False)
-    data_lancamento = Column(DateTime, nullable=False)
+    data_lancamento = Column(String, nullable=False)
     def __repr__(self):
         return (f'< Titulo: {self.titulo}, Tempo: {self.tempo_duracao_min}, Descricao: {self.descricao}, '
                 f' Trailer: {self.trailer}, Imagem: {self.imagem}, Data: {self.data_lancamento}>')
@@ -81,7 +80,7 @@ class Genero(Base):
     id_genero = Column(Integer, primary_key=True)
     nome_genero = Column(String, nullable=False)
     def __repr__(self):
-        return f'< Genero: {self.genero}>'
+        return f'< Genero: {self.nome_genero}>'
 
 class Genero_filme(Base):
     __tablename__ = 'genero_filme'

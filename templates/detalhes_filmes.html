@@ -1,0 +1,19 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<div class="detalhes_filme">
+    <div>
+        <video src="{{var_filmes.trailer}}" width="700" height="450" controls></video>
+    </div>
+    <div class="descricao">
+        <div>
+            <h3>Nome:{{var_filmes.nome_filme}}</h3>
+        </div>
+        <div class="links_filmes">
+            <a href="{{url_for('definir_genero')}}">Definir Genero</a>
+            <a href="#">Definir Diretor</a>
+            <a href="#">Definir Elenco</a>
+        </div>
+    </div>
+</div>
+{% endblock conteudo %}
