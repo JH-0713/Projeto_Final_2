@@ -1,13 +1,28 @@
 {% extends "base_pag.html" %}
 
 {% block conteudo %}
-<div>
-    {% for filme in var_filmes %}
-    <input type="checkbox" id="checks" name="{{var}}" value="Bike">
-    <label for="checks"> I have a bike</label>
-    Nome:{{filme.titulo}}
-    <a href="{{}}"></a>
-    {% endfor %}
-</div>
 
+<div class="formulario">
+    <div class="adicionar">
+        <a href="{{cadastrar_genero}}">
+        </a>
+    </div>
+    <div class="fundo_formulario">
+        <div class="filme_genero">
+            <h2>Defina o genero do filme: <br>{{var_filmes.titulo}}</h2>
+            {% for genero in var_generos %}
+            <label>
+                <input type="checkbox" name="form_genero" value="{{genero.id_genero}}">
+                {{genero.nome_genero}}
+            </label>
+            {% endfor %}
+        </div>
+        <div class="botoes">
+            <button type="submit" class="botao_input_style">Definir</button>
+            <a href="{{url_for('cadastro_genero')}}">
+                <button type="button" class="botao_input_style">Adicionar</button>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock conteudo %}

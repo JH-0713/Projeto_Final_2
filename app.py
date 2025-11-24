@@ -1,7 +1,8 @@
 from flask import Flask, flash
 from flask import render_template, redirect, request, url_for
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
-from models import local_secao, Ator, Avaliacao, Diretor, Diretor_Filme, Filme, Filme_Ator, Genero, Genero_filme, Usuario
+from models import local_secao, Ator, Avaliacao, Diretor, Diretor_Filme, Filme, Filme_Ator, Genero, Genero_filme, \
+    Usuario
 from sqlalchemy import select
 
 app = Flask(__name__)
@@ -98,7 +99,9 @@ def cadastrar_filme():
             flash("preencha o URL da Imagem", "error")
         if not request.form['form_lancamento']:
             flash("preencha a data de lancamento", "error")
-        dados_filme = Filme(titulo=request.form['form_titulo'],tempo_duracao_min=request.form['form_duracao'],descricao=request.form['form_descricao'],trailer=request.form['form_trailer'],imagem=request.form['form_imagem'],data_lancamento=request.form['form_lancamento'])
+        dados_filme = Filme(titulo=request.form['form_titulo'], tempo_duracao_min=request.form['form_duracao'],
+                            descricao=request.form['form_descricao'], trailer=request.form['form_trailer'],
+                            imagem=request.form['form_imagem'], data_lancamento=request.form['form_lancamento'])
         try:
             db_session.add(dados_filme)
             db_session.commit()
@@ -113,6 +116,7 @@ def cadastrar_filme():
     sql_generos = select(Genero)
     resultado = db_session.execute(sql_generos).scalars()
     return render_template('Cadastrar_Filme.html', var_generos=resultado)
+
 
 @app.route('/detalhar_filme/<var_id>', methods=['GET'])
 def info_filme(var_id):
@@ -137,6 +141,25 @@ def info_filme(var_id):
         # fechar ligação com o banco
         db_session.close()
 
+@app.route('/cadastrar_genero', methods=['GET', 'POST'])
+def cadastro_genero():
+    db_session = local_secao()
+    if request.method == 'POST':
+        if not request.form['form_nome_genero']:
+            flash("preencha o nome do genero", "error")
+        dados_genero = Genero(nome_genero=request.form['form_nome_genero'])
+    try:
+        db_session.add(dados_genero)
+        db_session.commit()
+        flash("Genero cadastrado com sucesso", "success")
+        return redirect(url_for(''))
+    except SQLAlchemyError as e:
+        print(f'Erro ao cadastrar genero:{e}')
+        db_session.rollback()
+    except Exception as ex:
+        print(f'Erro ao cadastrar genero:{ex}')
+    finally:
+        db_session.close()
 
 @app.route('/definir_genero/<var_id>', methods=['GET', 'POST'])
 def definir_genero(var_id):
@@ -146,16 +169,20 @@ def definir_genero(var_id):
         result_filme = db_session.execute(detalhes_filme).scalar_one_or_none()
         sql_generos = select(Genero)
         result_genero = db_session.execute(sql_generos).scalars()
-        print('genero:',result_genero)
-        print('filme:',result_filme)
+        generos_ids = request.form.getlist('form_genero')
+        for id_genero in generos_ids:
+            dados_generos = Genero_filme(tipo_genero=int(id_genero),
+                                         classe_filme=var_id)
+            db_session.add(dados_generos)
+        print(f'Genero: {result_genero}')
+        print(f'Filme: {result_filme}')
         return render_template('definicao_genero.html', var_generos=result_genero, var_filmes=result_filme)
     except SQLAlchemyError as e:
         print(f"Erro na base de dados: {e}")
     except Exception as ex:
-        print(f'Ocorreu um erro ao consultar pessoas: {ex}')
+        print(f'Ocorreu um erro ao definir genero: {ex}')
     finally:
         db_session.close()
-
 
 
 @app.route('/generos')
@@ -195,6 +222,7 @@ def detalhar_genero(var_id):
     finally:
         # fechar ligação com o banco
         db_session.close()
+
 
 if __name__ == '__main__':
     app.run(debug=True)

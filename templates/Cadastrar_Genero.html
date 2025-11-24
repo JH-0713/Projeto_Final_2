@@ -1,0 +1,19 @@
+{% extends "base_log.html" %}
+
+{% block conteudo %}
+<div>
+    <form class="form_cadastro" action="{{url_for('cadastrar_genero')}}" method="post">
+        <div class="form_cadastro_title">
+            <h1>Cadastrar usuario:</h1>
+            <label>
+                Nome do Genero:
+                <input type="text" name="form_nome_genero" placeholder="Digite o Nome do Genero" required>
+            </label>
+            <div class="botoes">
+                <button type="submit">Cadastrar</button>
+                <button type="reset">Limpar</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock conteudo %}
