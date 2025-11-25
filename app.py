@@ -187,33 +187,32 @@ def cadastro_genero():
     if request.method == 'POST':
         if not request.form['form_nome_genero']:
             flash("preencha o nome do genero", "error")
-    try:
-        dados_genero = Genero(nome_genero=request.form['form_nome_genero'])
-        db_session.add(dados_genero)
-        db_session.commit()
-        flash("Genero cadastrado com sucesso", "success")
-        return redirect(url_for('definir_genero'))
-    except SQLAlchemyError as e:
-        print(f'Erro ao cadastrar genero:{e}')
-        db_session.rollback()
-    except Exception as ex:
-        print(f'Erro ao cadastrar genero:{ex}')
-    finally:
-        db_session.close()
+        try:
+            dados_genero = Genero(nome_genero=request.form['form_nome_genero'])
+            db_session.add(dados_genero)
+            db_session.commit()
+            flash("Genero cadastrado com sucesso", "success")
+            return redirect(url_for('get_generos'))
+        except SQLAlchemyError as e:
+            print(f'Erro ao cadastrar genero:{e}')
+            db_session.rollback()
+        except Exception as ex:
+            print(f'Erro ao cadastrar genero:{ex}')
+        finally:
+            db_session.close()
+    return render_template('Cadastrar_Genero.html')
 
 
-@app.route('/detalhar_filme/definir_genero/<var_id>', methods=['GET', 'POST'])
+@app.route('/definir_genero/<var_id>', methods=['GET', 'POST'])
 def definir_genero(var_id):
     db_session = local_secao()
     if request.method == 'POST':
-        if not request.form['form_genero']:
-            flash("marque o genero do filme", "error")
         try:
             dados_genero = select(Genero)
             resultado_g = db_session.execute(dados_genero).scalars()
             dados_filme = select(Filme).where(Filme.id_filme == var_id)
             resultado_f = db_session.execute(dados_filme).scalar_one_or_none()
-            return render_template('Definir_Genero.html', var_generos=resultado_g, var_filmes=resultado_f)
+            return render_template('Definir_Genero.html', var_generos=resultado_g, var_filme=resultado_f)
         except SQLAlchemyError as e:
             print(f'Erro ao cadastrar genero:{e}')
             db_session.rollback()
@@ -223,10 +222,16 @@ def definir_genero(var_id):
             return redirect(url_for('definir_genero'))
         finally:
             db_session.close()
+    dados_genero = select(Genero)
+    resultado_g = db_session.execute(dados_genero).scalars()
+    dados_filme = select(Filme).where(Filme.id_filme == var_id)
+    resultado_f = db_session.execute(dados_filme).scalar_one_or_none()
     dados_filme = select(Filme).where(Filme.id_filme == var_id)
     resultado = db_session.execute(dados_filme).scalar_one_or_none()
-    print('jjk',resultado.id_filme)
-    return render_template('Definir_Genero.html', var_id=resultado.id_filme)
+    print('jjk', resultado.id_filme)
+    return render_template('Definir_Genero.html', var_id_f=resultado.id_filme, var_generos=resultado_g,
+                           var_filme=resultado_f)
+
 
 
 if __name__ == '__main__':

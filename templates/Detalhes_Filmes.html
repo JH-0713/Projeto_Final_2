@@ -3,11 +3,14 @@
 {% block conteudo %}
 <div class="detalhes_filme">
     <div>
-        <video src="{{var_filmes.trailer}}" width="700" height="450" controls></video>
+        <video src="{{ var_filmes.trailer }}" width="700" height="450" controls></video>
     </div>
     <div class="descricao">
         <div>
-            <h3>Nome:{{var_filmes.titulo}}</h3>
+            <h2>{{var_filmes.titulo}}</h2>
+            <h4>{{var_filmes.tempo_duracao_min}}</h4>
+            <h4>{{var_filmes.descricao}}</h4>
+            <h4>{{var_filmes.data_lancamento}}</h4>
         </div>
         <div class="links_filmes">
             <a href="{{url_for('definir_genero', var_id = var_filmes.id_filme)}}">Definir Genero</a>

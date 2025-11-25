@@ -301,6 +301,10 @@ button:hover {
     justify-content: left;
 }
 
+.detalhes_filme div {
+    margin: 10px;
+}
+
 .links_filmes a{
     text-decoration: none;
     color: white;
@@ -323,30 +327,50 @@ button:hover {
     margin: 5px;
 }
 
-.filme_genero input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #ff4d4d;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    margin: 0;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 6px rgba(255, 77, 77, 0.7);
+
+.checagem label {
+    display: flex;
+    align-items: center;
 }
 
-.filme_genero input[type="checkbox"]:hover {
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
+
+input[type="checkbox"] {
+    display: flex;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    transition: 0.3s;
+    position: relative;
+}
+
+input[type="checkbox"]:hover {
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.9);
     transform: scale(1.05);
 }
 
-.filme_genero input[type="checkbox"]:checked {
-    background-color: #ff4d4d;
+input[type="checkbox"]:checked {
+    background: #ff4d4d;
     box-shadow: 0 0 12px rgba(255, 77, 77, 1);
-    border-color: #ff4d4d;
 }
+
+input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+
 
 .filme_genero label {
     display: flex;
@@ -362,6 +386,7 @@ button:hover {
 .descricao {
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 /* ===== Responsividade ===== */

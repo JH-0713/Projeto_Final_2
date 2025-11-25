@@ -4,15 +4,19 @@
 
 <div class="formulario">
     <div class="fundo_formulario">
-        <form class="form_cadastro" action="{{url_for('definir_genero')}}" method="post">
+        <form class="form_cadastro" action="{{url_for('definir_genero', var_id = var_id_f)}}" method="post">
             <div class="form_cadastro_title">
-                <h1>Cadastrar usuario:</h1>
-                <label>
-                    {% for genero in var_generos %}
-                    {{genero.nome_genero}}
-                    <input type="checkbox" name="form_nome_genero" placeholder="Digite o Nome do Genero" required>
-                    {% endfor %}
-                </label>
+                <div>
+                    <h1>Definir Genero:</h1>
+                </div>
+                {% for genero in var_generos %}
+                <div class="checagem">
+                    <label>
+                        <input type="checkbox" name="form_genero">
+                        {{genero.nome_genero}}
+                    </label>
+                </div>
+                {% endfor %}
                 <div class="botoes">
                     <button type="submit">Cadastrar</button>
                     <button type="reset">Limpar</button>
