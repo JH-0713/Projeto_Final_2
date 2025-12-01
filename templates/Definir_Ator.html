@@ -1,0 +1,25 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+
+<div class="formulario">
+    <div class="fundo_formulario">
+        <form class="form_cadastro" action="{{ url_for('definir_ator', var_id=var_id_f) }}" method="post">
+            <div class="form_cadastro_title">
+                <h1>Definir Ator:</h1>
+                {% for ator in var_atores %}
+                <label>
+                    <input type="checkbox" name="form_ator" value="{{ ator.id_ator }}">
+                    {{ ator.nome_ator }}
+                </label>
+                {% endfor %}
+                <div class="botoes">
+                    <button type="submit" class="botao_input_style">Cadastrar</button>
+                    <a href="{{url_for('cadastro_ator')}}" class="botao_input_style">Adicionar Ator</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock conteudo %}

@@ -1,0 +1,32 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+
+<div class="formulario">
+    <div class="fundo_formulario">
+        <h1>Editar Pessoa</h1>
+        <form action="{{url_for('alterar_usuario', var_id = dados_user.id_usuario)}}" method="post">
+            <label>
+                Nome::
+                <input type="text" name="form_nome" value="{{dados_user.nome_usuario}}">
+            </label>
+            <label>
+                Email:
+                <input type="text" name="form_email" value="{{dados_user.email}}">
+            </label>
+            <label>
+                Senha:
+                <input type="text" name="form_senha" value="{{dados_user.senha}}">
+            </label>
+            <div class="botoes">
+                <button type="submit" class="botao_input_style">
+                    Editar
+                </button>
+                <button type="submit" class="botao_input_style">
+                    Limpar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock conteudo %}

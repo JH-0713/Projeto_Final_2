@@ -1,0 +1,15 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<div class="links">
+    <div class="link_titulo">
+        <h1>Atores</h1>
+        <a href="{{url_for('cadastro_ator')}}">Adicionar Ator</a>
+    </div>
+</div>
+<div class="escolha">
+    {% for ator in var_atores %}
+    <a href="{{url_for('detalhar_ator', var_id = ator.id_ator)}}">{{ator.nome_ator}}</a>
+    {% endfor %}
+</div>
+{% endblock conteudo %}

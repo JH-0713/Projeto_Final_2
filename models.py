@@ -60,10 +60,10 @@ class Filme(Base):
 class Filme_Ator(Base):
     __tablename__ = 'filmes_ators'
     id_filme_ator = Column(Integer, primary_key=True)
-    filmes = Column(Integer, ForeignKey('filme.id_filme'))
+    cena = Column(Integer, ForeignKey('filme.id_filme'))
     participacao = Column(Integer, ForeignKey('ator.id_ator'))
     def __repr__(self):
-        return f'<Filme {self.filmes}, Ator: {self.participacao}>'
+        return f'<Filme {self.cena}, Ator: {self.participacao}>'
 
 
 class Usuario(Base):
@@ -82,7 +82,7 @@ class Genero(Base):
     def __repr__(self):
         return f'< Genero: {self.nome_genero}>'
 
-class Genero_filme(Base):
+class Genero_Filme(Base):
     __tablename__ = 'genero_filme'
     id_genero_filme = Column(Integer, primary_key=True)
     tipo_genero = Column(Integer, ForeignKey('genero.id_genero'))

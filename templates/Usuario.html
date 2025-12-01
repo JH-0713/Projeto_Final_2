@@ -1,0 +1,32 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+<div class="card_info">
+    <div class="info_user">
+        <h1>Informações de Usuario</h1>
+        <div>
+            <h4>Nome do Usuario:</h4>
+            <ul>
+                <li>{{var_usuario.nome_usuario}}</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Email:</h4>
+            <ul>
+                <li>{{var_usuario.email}}</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Senha:</h4>
+            <ul>
+                <li>{{var_usuario.senha}}</li>
+            </ul>
+        </div>
+        <div class="botoes">
+            <a href="{{url_for('cadastrar_user')}}" class="botao_input_style">Sair da Conta</a>
+            <a href="{{url_for('alterar_usuario', var_id=var_usuario.id_usuario)}}"class="botao_input_style">Alterar Conta</a>
+        </div>
+    </div>
+</div>
+
+{% endblock conteudo %}

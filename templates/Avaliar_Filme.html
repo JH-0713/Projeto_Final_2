@@ -1,0 +1,22 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+
+<div class="formulario">
+    <div class="fundo_formulario">
+
+        <h1>Avaliar Filme</h1>
+        <h2>{{ var_filme.titulo }}</h2>
+
+        <form action="{{ url_for('avaliar_filme', id_filme=var_filme.id_filme, id_usuario=id_usuario) }}" method="post">
+            <label for="critica">Crítica:</label>
+            <textarea name="form_critica" id="critica" rows="8" placeholder="Escreva sua avaliação..." required></textarea>
+            <div class="botoes">
+                <button type="reset" class="botao_input_style">Limpar</button>
+                <button type="submit" class="botao_input_style">Enviar Avaliação</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

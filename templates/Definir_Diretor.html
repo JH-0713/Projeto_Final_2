@@ -1,0 +1,25 @@
+{% extends "base_pag.html" %}
+
+{% block conteudo %}
+
+<div class="formulario">
+    <div class="fundo_formulario">
+        <form class="form_cadastro" action="{{ url_for('definir_diretor', var_id=var_id_f) }}" method="post">
+            <div class="form_cadastro_title">
+                <h1>Definir Gênero:</h1>
+                {% for diretor in var_diretores %}
+                <label>
+                    <input type="checkbox" name="form_diretor" value="{{ diretor.id_diretor }}">
+                    {{ diretor.nome_diretor }}
+                </label>
+                {% endfor %}
+                <div class="botoes">
+                    <button type="submit" class="botao_input_style">Cadastrar</button>
+                    <a href="{{url_for('cadastro_diretor')}}" class="botao_input_style">Adicionar Gênero</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock conteudo %}
