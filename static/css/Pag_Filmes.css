@@ -1,16 +1,11 @@
 body {
-    background-color: #000;
+    background: url("/static/img/fund1.png") no-repeat center center fixed;
+    background-size: cover;
     font-family: "Roboto", "Arial", "sans-serif";
     color: white;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-abbr {
-    text-decoration: none;
-    color: #ffffffcc;
-
 }
 
 .link_pag {
@@ -23,6 +18,7 @@ abbr {
     color: #ff4d4d;
 }
 
+/* header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -38,7 +34,6 @@ abbr {
     height: 60px;
 }
 
-/* Menu de navegação */
 .lista {
     display: flex;
     gap: 30px;
@@ -56,8 +51,7 @@ abbr {
     color: #ff4d4d;
     transform: scale(1.05);
 }
-
-/* Campo de pesquisa */
+/*barra de pesquisa*/
 .pesquisa {
     display: flex;
     align-items: center;
@@ -71,6 +65,35 @@ abbr {
 
 .pesquisa:hover {
     box-shadow: 0 0 8px rgba(255, 77, 77, 0.6);
+}
+
+.barra_pesquisa {
+    display: flex;
+}
+
+.barra_pesquisa input {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 15px 0px 0px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 14px;
+    resize: vertical;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    transition: all 0.3s ease;
+}
+
+.botao_input_pesquisa {
+    display: flex;
+    margin: 0;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 0px 15px 15px 0px;
+    justify-content: center;
+    align-items: center;
 }
 
 .barra {
@@ -90,7 +113,6 @@ abbr {
     width: 22px;
 }
 
-/* Ícone do usuário */
 .user {
     height: 32px;
     width: auto;
@@ -104,14 +126,13 @@ abbr {
     opacity: 1;
     transform: scale(1.07);
 }
-
-/* ===== Formulário centralizado ===== */
+/* Cadastros */
 .formulario {
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    margin: 15px;
+    margin: 30px;
 }
 
 .fundo_formulario {
@@ -127,6 +148,23 @@ abbr {
     transform: translateY(-5px);
     box-shadow: 0 0 25px rgba(255, 77, 77, 0.9);
 }
+/* titulo dos cadastros */
+.form_cadastro_title h1 {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.form_cadastro_title label {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.form_cadastro_title label input {
+    margin-right: 10px;
+}
+
 
 .formulario h2 {
     text-align: center;
@@ -142,7 +180,6 @@ form label {
 form input, form textarea {
     width: 92%;
     padding: 10px;
-    margin-top: 8px;
     border: none;
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.3);
@@ -181,8 +218,7 @@ form select option {
     background: rgba(0, 0, 0, 0.1);
     color: white;
 }
-
-/* ===== Botões ===== */
+/*botoes*/
 button {
     text-decoration: none;
     padding: 10px;
@@ -191,18 +227,16 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin: 15px;
-    background-color: #d9006c;
-    color: white;
     border: none;
 }
 
 button:hover {
-    background-color: #ff4d85;
     transform: scale(1.05);
 }
 
 .botoes {
     display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -211,8 +245,13 @@ button:hover {
 }
 
 .botao_input_style {
-    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
     border: none;
+    margin: 15px;
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.3);
     color: white;
@@ -220,6 +259,7 @@ button:hover {
     box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
     transition: all 0.3s ease;
     cursor: pointer;
+    font-weight: 700;
 }
 
 .botao_input_style:hover {
@@ -228,48 +268,58 @@ button:hover {
 }
 
 .botao_input_style:focus {
-    outline: none;
     box-shadow: 0 0 12px 2px #ff4d4d;
     background: rgba(0, 0, 0, 0.5);
 }
 
-.genero {
+/* Links: a */
+.links {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.genero_titulo {
+.link_titulo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: rgba(139, 0, 0, 0.9);
+    color: black; /* permanece preto */
     font-size: 25px;
+
+    /* brilho vermelho ao redor */
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 15px #ff1a1a,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
 }
 
-.genero_titulo h1 {
+.link_titulo h1 {
     margin: 10px;
-    font-size:  50px;
+    font-size: 50px;
 }
 
-.genero_titulo a {
+.link_titulo a {
     text-decoration: none;
     color: white;
     font-size: 20px;
     margin: 15px;
 }
 
-.genero_titulo a:hover {
+.link_titulo a:hover {
     color: rgba(255, 77, 77, 0.8);
 }
 
-.adicionar  img{
+.adicionar img {
     display: flex;
     border-radius: 50px;
     box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
     background: rgba(139, 0, 0, 0.9);
 }
+
+/* Nome dos Generos/Diretores/Atores cadastrados */
 
 .escolha {
     display: flex;
@@ -295,50 +345,97 @@ button:hover {
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 0 15px rgba(255, 77, 77, 0.9);
 }
-
+/* Detalhes do filme estilo cadastro com imagem separada do texto */
 .detalhes_filme {
     display: flex;
-    justify-content: left;
+    justify-content: center;
+    margin: 30px;
+    gap: 20px; /* espaço entre imagem e texto */
 }
 
-.detalhes_filme div {
-    margin: 10px;
+.detalhes_filme > img {
+    max-width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
+    object-fit: cover;
 }
 
-.links_filmes a{
-    text-decoration: none;
+.detalhes_filme .descricao {
+    background: rgba(139, 0, 0, 0.9); /* quadro vermelho igual ao formulário */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
+    max-width: 700px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalhes_filme h3 {
+    display: block;
+    margin: 10px 0 5px 0;
+    color: black;
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 30px #ff0000;
+}
+
+.detalhes_filme ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.detalhes_filme ul li {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
     color: white;
+    margin-bottom: 5px;
+}
+
+.links_filmes {
     display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    margin: 15px;
+    justify-content: flex-start; /* botão começa alinhado à esquerda, igual aos cards */
+    margin: 20px 10px 30px 10px; /* topo 20px, laterais 10px igual aos cards, fundo 30px */
 }
 
-.links_filmes a:hover{
-    color: rgba(255, 77, 77, 0.9);
+.links_filmes a {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(255, 77, 77, 0.7);
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
-.filme_genero {
-    display: flex;
-    flex-direction: column;
+/* Responsivo para telas pequenas */
+@media (max-width: 768px) {
+    .detalhes_filme {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detalhes_filme > img {
+        max-width: 90%;
+    }
+
+    .detalhes_filme .descricao {
+        max-width: 90%;
+    }
 }
 
-.filme_genero label {
-    margin: 5px;
-}
-
-
-.checagem label {
-    display: flex;
-    align-items: center;
-}
-
-
+/* definir Genero/Diretor/Ator*/
 input[type="checkbox"] {
-    display: flex;
     appearance: none;
-    width: 22px;
-    height: 22px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -359,19 +456,12 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 7px;
-    width: 6px;
-    height: 12px;
     border: solid white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
 }
 
-
-
+/*Titulo no Cadastrar*/
 .filme_genero label {
     display: flex;
     align-items: center;
@@ -382,14 +472,12 @@ input[type="checkbox"]:checked::after {
     color: white;
 }
 
-
+/* Detalhes do Filme */
 .descricao {
     display: flex;
     flex-direction: column;
-    color: white;
 }
 
-/* ===== Responsividade ===== */
 @media (max-width: 480px) {
     .escolha {
         max-width: 90%;
@@ -400,12 +488,109 @@ input[type="checkbox"]:checked::after {
         font-size: 14px;
     }
 }
-
+/* Modelo retangular dos filmes cadastrados */
 .cards {
     display: flex;
     flex-wrap: wrap;
     margin: 10px;
 }
+
+/* QUADRO VERMELHO IGUAL AO CADASTRO */
+
+.card_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.info_user {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+    padding: 40px;
+    width: 600px;
+    border-radius: 20px;
+    color: white;
+}
+
+/* TÍTULO — PRETO COM BRILHO VERMELHO */
+.info_user h1 {
+    text-align: center;
+    color: black;
+    text-shadow:
+        0 0 10px red,
+        0 0 15px red,
+        0 0 20px red;
+    margin-bottom: 25px;
+}
+
+/* TÍTULOS DAS SEÇÕES */
+.info_user h4 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* TEXTOS DENTRO DOS QUADROS */
+.info_user ul li {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid red;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+/* BOTÕES — IGUAL AO CADASTRO */
+.botao_input_style {
+    background: black;
+    padding: 12px 30px;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    border: none;
+    box-shadow: 0 0 15px red;
+}
+
+.botao_input_style:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px red;
+    cursor: pointer;
+}
+
+/* ORGANIZAÇÃO DOS BOTÕES */
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* BOTÕES – iguais aos do cadastro */
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botao_input_style {
+    background-color: #000000;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.botao_input_style:hover {
+    transform: scale(1.05);
+    background-color: #2b2b2b;
+}
+
 
 .filmes_cadastrado {
     display: flex;
@@ -429,8 +614,6 @@ input[type="checkbox"]:checked::after {
     border-radius: 5px;
 }
 
-
-/* ===== Responsividade ===== */
 @media (max-width: 480px) {
     .formulario {
         width: 90%;
@@ -460,4 +643,74 @@ input[type="checkbox"]:checked::after {
         margin-top: 10px;
         align-self: flex-end;
     }
+}
+
+.formulario,
+.formulario h1,
+.formulario h2,
+.formulario label,
+.formulario p,
+.formulario span {
+    color: black;
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 30px #ff0000;
+}
+.header,
+.header a,
+.header .lista a {
+    color: black !important;
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 30px #ff0000;
+}
+
+.genero_titulo {
+    text-align: center;
+    color: black;
+    margin: 20px auto;
+
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 15px #ff1a1a,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
+}
+.a {
+    text-align: center;
+    color: black;
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 30px #ff0000;
+    margin-bottom: 20px;
+}
+.estrelas {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.estrelas input {
+    display: none;
+}
+
+.estrelas label {
+    font-size: 2em;
+    color: #ccc;
+    cursor: pointer;
+    padding: 0 0.1em;
+}
+
+.estrelas label:hover,
+.estrelas label:hover ~ label {
+    color: #ffc107;
+}
+
+.estrelas label:has(input:checked),
+.estrelas label:has(input:checked) ~ label {
+    color: #ffc107;
 }

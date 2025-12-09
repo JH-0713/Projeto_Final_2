@@ -1,4 +1,6 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Cadastrar Gênero{% endblock titulo %}
 
 {% block conteudo %}
 <div class="formulario">
@@ -7,12 +9,12 @@
             <div class="form_cadastro_title">
                 <h1>Cadastrar usuario:</h1>
                 <label>
-                    Nome do Genero:
-                    <input type="text" name="form_nome_genero" placeholder="Digite o Nome do Genero" required>
+                    Nome do Gênero:
+                    <input type="text" name="form_nome_genero" placeholder="Digite o Nome do Gênero" required>
                 </label>
                 <div class="botoes">
-                    <button type="submit">Cadastrar</button>
-                    <button type="reset">Limpar</button>
+                    <button type="submit" class="botao_input_style">Cadastrar</button>
+                    <button type="reset" class="botao_input_style">Limpar</button>
                 </div>
             </div>
         </form>

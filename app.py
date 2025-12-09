@@ -1,7 +1,8 @@
 from flask import Flask, flash
 from flask import render_template, redirect, request, url_for
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
-from models import local_secao, Ator, Avaliacao, Diretor, Diretor_Filme, Filme, Filme_Ator, Genero, Genero_Filme, Usuario
+from models import local_secao, Ator, Avaliacao, Diretor, Diretor_Filme, Filme, Filme_Ator, Genero, Genero_Filme, \
+    Usuario
 from sqlalchemy import select
 
 app = Flask(__name__)
@@ -110,9 +111,7 @@ def cadastrar_filme():
             db_session.rollback()
         finally:
             db_session.close()
-    sql_generos = select(Genero)
-    resultado = db_session.execute(sql_generos).scalars()
-    return render_template('Cadastrar_Filme.html', var_generos=resultado)
+    return render_template('Cadastrar_Filme.html')
 
 
 @app.route('/detalhar_filme/<int:var_id>', methods=['GET'])
@@ -120,7 +119,11 @@ def info_filme(var_id):
     db_session = local_secao()
     try:
         detalhes_filme = select(Filme).where(Filme.id_filme == var_id)
-        resultado = db_session.execute(detalhes_filme).scalar_one_or_none()
+        resultado_f = db_session.execute(detalhes_filme).scalar_one_or_none()
+
+        detalhes_user = select(Usuario)
+        var_user = db_session.execute(detalhes_user).scalar_one_or_none()
+
         sql_generos_filme = select(Genero).join(Genero_Filme, Genero.id_genero == Genero_Filme.tipo_genero).where(
             Genero_Filme.classe_filme == var_id)
         lista_generos = db_session.execute(sql_generos_filme).scalars()
@@ -136,9 +139,15 @@ def info_filme(var_id):
             Filme_Ator.cena == var_id)
         lista_atores = db_session.execute(sql_atores_filme).scalars()
         var_af = db_session.execute(sql_atores_filme).first()
-        return render_template('Detalhes_Filmes.html', var_filmes=resultado,
+
+        detalhes_aval = select(Avaliacao).where(Avaliacao.movie == var_id)
+        resultado_a = db_session.execute(detalhes_aval).scalar_one_or_none()
+        sql_avaliacao_filme = select(Usuario).join(Avaliacao, Usuario.id_usuario == Avaliacao.usuario_id).where(
+            Avaliacao.movie == var_id)
+        var_ua = db_session.execute(sql_avaliacao_filme).scalars().all()
+        return render_template('Dethalhes_Filmes.html', var_filmes=resultado_f,
                                var_generos=lista_generos, var_diretores=lista_diretores, var_atores=lista_atores,
-                               var_gf=var_gf, var_df=var_df, var_af=var_af)
+                               var_user = var_user,var_aval=resultado_a,var_gf=var_gf, var_df=var_df, var_af=var_af,var_ua=var_ua)
     except SQLAlchemyError as e:
         print(f"Erro na base de dados: {e}")
         flash(f"Erro na base de dados", 'danger')
@@ -150,6 +159,7 @@ def info_filme(var_id):
         return redirect(url_for('listar_filmes'))
     finally:
         db_session.close()
+
 
 
 @app.route('/pesquisar_filme', methods=['POST'])
@@ -196,7 +206,7 @@ def cadastro_genero():
             db_session.add(dados_genero)
             db_session.commit()
             flash("Genero cadastrado com sucesso", "success")
-            return redirect(url_for('get_generos'))
+            return redirect(url_for('listar_filmes'))
         except SQLAlchemyError as e:
             print(f'Erro ao cadastrar genero:{e}')
             db_session.rollback()
@@ -508,30 +518,31 @@ def alterar_usuario(var_id):
             db_session.close()
     return render_template('Editar_Usuario.html', dados_user=resultado)
 
-
-@app.route('/detalhar_filme/avaliar/<int:id_usuario>/<int:id_filme>', methods=['GET', 'POST'])
-def avaliar_filme(id_usuario, id_filme):
+@app.route('/detalhar_filme/avaliar/<int:var_u>/<int:var_id>', methods=['GET', 'POST'])
+def avaliar_filme(var_u, var_id):
     db_session = local_secao()
     if request.method == 'POST':
+        if not request.form['form_nota']:
+            flash('preencha o campo de nota')
         if not request.form['form_critica']:
-            flash("preencha o nome do genero", "error")
-        critica = request.form.get("form_critica")
+            flash("preencha o campo de critica", "error")
         try:
-            nova_avaliacao = Avaliacao(critica=critica,usuario=id_usuario,movie=id_filme)
+            nova_avaliacao = Avaliacao(nota=request.form['form_nota'],critica=request.form["form_critica"],usuario_id=var_u,movie=var_id)
             db_session.add(nova_avaliacao)
             db_session.commit()
             flash("Avaliação registrada com sucesso!", "success")
-            return redirect(url_for('info_filme', var_id=id_filme))
+            return redirect(url_for('info_filme', var_id=var_id))
         except SQLAlchemyError as e:
             print(f"Erro ao salvar avaliação: {e}")
             db_session.rollback()
             flash("Erro ao salvar avaliação", "error")
         finally:
             db_session.close()
-    sql_filme = select(Filme).where(Filme.id_filme == id_filme)
+    sql_filme = select(Filme).where(Filme.id_filme == var_id)
     filme = db_session.execute(sql_filme).scalar_one_or_none()
-    return render_template('Avaliar_Filme.html',var_filme=filme,id_usuario=id_usuario)
-
+    sql_user = select(Usuario).where(Usuario.id_usuario  == var_u)
+    user = db_session.execute(sql_user).scalar_one_or_none()
+    return render_template('Avaliar_Filme.html',var_filme=filme,var_user=user)
 
 if __name__ == '__main__':
     app.run(debug=True)

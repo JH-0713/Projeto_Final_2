@@ -1,4 +1,6 @@
-{% extends "base_log.html" %}
+{% extends "Base_Log.html" %}
+
+{% block titulo %}Cadastrar Usuario{% endblock titulo %}
 
 {% block conteudo %}
 <div>
@@ -14,10 +16,10 @@
             <label for="input_senha">Senha</label>
             <input id="input_senha" type="password" name="form_senha" placeholder="Digite sua senha" required>
             <div class="botoes">
-                <a href="{{url_for('logar_usuario')}}">
-                    <button type="button">Login</button>
+                <a href="{{url_for('logar_usuario')}}" class="botao_input_style">
+                    Login
                 </a>
-                <button type="submit">Cadastrar</button>
+                <button type="submit" class="botao_input_style">Cadastrar</button>
             </div>
         </div>
     </form>

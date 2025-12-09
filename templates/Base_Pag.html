@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}{% endblock titulo %}</title>
+    <link rel="stylesheet" href="/static/css/Pag_Filmes.css">
+</head>
+<body>
+<div class="body_main">
+    <div class="header">
+        <div class="titulo">
+            <img src="/static/img/logo.png" alt="slogam" class="logo">
+        </div>
+        <nav class="lista">
+            <a href="{{url_for('listar_filmes')}}">Filmes</a>
+            <a href="{{url_for('get_generos')}}">Generos</a>
+            <a href="{{url_for('get_diretores')}}">Diretores</a>
+            <a href="{{url_for('get_atores')}}">Atores</a>
+            <a href="{{url_for('cadastrar_filme')}}">Cadastrar filme</a>
+        </nav>
+        <form action="{{ url_for('pesquisar_filmes') }}" method="post">
+            <div class="barra_pesquisa">
+                <input type="search" name="pesquisa"
+                       placeholder="Pesquisar título do filme...">
+                <div class="botao_pesquisa">
+                    <button type="submit" class="botao_input_pesquisa"><img src="/static/img/lupa.png" alt="lupa" class="lupa"></button>
+                </div>
+            </div>
+        </form>
+        <a href="{{url_for('get_usuario')}}"><img src="/static/img/user.png" alt="user" class="user"></a>
+    </div>
+    {% block conteudo %}
+    {% endblock conteudo %}
+</div>
+</body>
+</html>

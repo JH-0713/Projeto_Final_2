@@ -1,16 +1,17 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Diretores{% endblock titulo %}
 
 {% block conteudo %}
-<div class="genero_titulo">
-    <h1>Genero: {{var_generos.nome_genero}}</h1>
-</div>
-
-<div class="cards">
-    {% for filme in var_filmes %}
-    <div class="filmes_cadastrado">
-        <a href="{{url_for('info_filme', var_id = filme.id_filme)}}"><img src="{{filme.imagem}}" alt="{{filme.nome_filme}}" width="245px" height="130px"></a>
+<div class="links">
+    <div class="link_titulo">
+        <h1>Diretores</h1>
+        <a href="{{url_for('cadastro_diretor')}}">Adicionar Diretor</a>
     </div>
+</div>
+<div class="escolha">
+    {% for diretor in var_diretores %}
+    <a href="{{url_for('detalhar_diretor', var_id = diretor.id_diretor)}}">{{diretor.nome_diretor}}</a>
     {% endfor %}
 </div>
-
 {% endblock conteudo %}

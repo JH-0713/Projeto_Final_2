@@ -1,19 +1,45 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Avaliar Filme{% endblock titulo %}
 
 {% block conteudo %}
 
 <div class="formulario">
     <div class="fundo_formulario">
-
-        <h1>Avaliar Filme</h1>
-        <h2>{{ var_filme.titulo }}</h2>
-
-        <form action="{{ url_for('avaliar_filme', id_filme=var_filme.id_filme, id_usuario=id_usuario) }}" method="post">
+        <h1>Avaliar Filme:</h1>
+        <form action="{{ url_for('avaliar_filme', var_id=var_filme.id_filme, var_u=var_user.id_usuario) }}"
+              method="post">
+            <div>
+                <div class="titulo_nota">Nota do Filme:</div>
+                <div class="estrelas">
+                    <label>
+                        <input type="radio" name="form_nota" value="5">
+                        &#9733;
+                    </label>
+                    <label>
+                        <input type="radio" name="form_nota" value="4">
+                        &#9733;
+                    </label>
+                    <label>
+                        <input type="radio" name="form_nota" value="3">
+                        &#9733;
+                    </label>
+                    <label>
+                        <input type="radio" name="form_nota" value="2">
+                        &#9733;
+                    </label>
+                    <label>
+                        <input type="radio" name="form_nota" value="1">
+                        &#9733;
+                    </label>
+                </div>
+            </div>
             <label for="critica">Crítica:</label>
-            <textarea name="form_critica" id="critica" rows="8" placeholder="Escreva sua avaliação..." required></textarea>
+            <textarea name="form_critica" id="critica" rows="8" placeholder="Escreva sua avaliação..."
+                      required></textarea>
             <div class="botoes">
-                <button type="reset" class="botao_input_style">Limpar</button>
                 <button type="submit" class="botao_input_style">Enviar Avaliação</button>
+                <button type="reset" class="botao_input_style">Limpar</button>
             </div>
         </form>
     </div>

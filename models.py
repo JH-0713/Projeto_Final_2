@@ -22,11 +22,12 @@ class Ator(Base):
 class Avaliacao(Base):
     __tablename__ = 'avaliacao'
     id_avaliacao = Column(Integer, primary_key=True)
+    nota = Column(String, nullable=False)
     critica = Column(Text, nullable=False)
-    usuario = Column(Integer, ForeignKey('usuario.id_usuario'))
-    movie = Column(Integer, ForeignKey('movies.id_movie'))
+    usuario_id = Column(Integer, ForeignKey('usuario.id_usuario'))
+    movie = Column(Integer, ForeignKey('filme.id_filme'))
     def __repr__(self):
-        return f'<Critica {self.critica}, Usuario: {self.usuario}, Movie: {self.movie}>'
+        return f'<Critica {self.critica}, Usuario: {self.usuario_id}, Movie: {self.movie}>'
 
 class Diretor(Base):
     __tablename__ = 'diretor'
@@ -49,16 +50,15 @@ class Filme(Base):
     titulo = Column(String, nullable=False)
     tempo_duracao_min = Column(String, nullable=False)
     descricao = Column(Text, nullable=False)
-    trailer = Column(Text, nullable=False)
     imagem = Column(Text, nullable=False)
     data_lancamento = Column(String, nullable=False)
     def __repr__(self):
         return (f'< Titulo: {self.titulo}, Tempo: {self.tempo_duracao_min}, Descricao: {self.descricao}, '
-                f' Trailer: {self.trailer}, Imagem: {self.imagem}, Data: {self.data_lancamento}>')
+                f' Imagem: {self.imagem}, Data: {self.data_lancamento}>')
 
 
 class Filme_Ator(Base):
-    __tablename__ = 'filmes_ators'
+    __tablename__ = 'filme_ator'
     id_filme_ator = Column(Integer, primary_key=True)
     cena = Column(Integer, ForeignKey('filme.id_filme'))
     participacao = Column(Integer, ForeignKey('ator.id_ator'))

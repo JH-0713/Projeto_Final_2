@@ -1,4 +1,4 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
 
 {% block conteudo %}
 
@@ -7,7 +7,7 @@
         <h1>Editar Pessoa</h1>
         <form action="{{url_for('alterar_usuario', var_id = dados_user.id_usuario)}}" method="post">
             <label>
-                Nome::
+                Nome:
                 <input type="text" name="form_nome" value="{{dados_user.nome_usuario}}">
             </label>
             <label>

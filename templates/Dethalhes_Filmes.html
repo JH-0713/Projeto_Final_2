@@ -1,0 +1,114 @@
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Detalhar Filme{% endblock titulo %}
+
+{% block conteudo %}
+<div class="detalhes_filme">
+    <div>
+        <img src="{{var_filmes.imagem}}" width="650" height="75%">
+    </div>
+    <div class="descricao">
+        <div>
+            <h3>Nome:</h3>
+            <ul>
+                <li>{{var_filmes.titulo}}</li>
+            </ul>
+            <h3>Tempo de Duração:</h3>
+            <ul>
+                <li>{{var_filmes.tempo_duracao_min}}</li>
+            </ul>
+            <h3>Descrição:</h3>
+            <ul>
+                <li>{{var_filmes.descricao}}</li>
+            </ul>
+            <h3>Data de Lançamento:</h3>
+            <ul>
+                <li>{{var_filmes.data_lancamento}}</li>
+            </ul>
+            <div>
+                <h3>Gêneros:</h3>
+                <ul>
+                    {% if var_gf %}
+                    {% for genero in var_generos %}
+                    <li>{{ genero.nome_genero }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <div class=links_filmes>
+                        Gênero não definido
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class=links_filmes>
+                {% if not var_gf %}
+                <a href="{{ url_for('definir_genero', var_id=var_filmes.id_filme) }}">
+                    Definir Gênero
+                </a>
+                {% endif %}
+            </div>
+            <div>
+                <h3>Diretor:</h3>
+                <ul>
+                    {% if var_df %}
+                    {% for diretor in var_diretores %}
+                    <li>{{ diretor.nome_diretor }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <div class=links_filmes>
+                        Diretor não definido
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class=links_filmes>
+                {% if not var_df %}
+                <a href="{{ url_for('definir_diretor', var_id=var_filmes.id_filme) }}">
+                    Definir Diretor
+                </a>
+                {% endif %}
+            </div>
+            <div>
+                <h3>Elenco:</h3>
+                <ul>
+                    {% if var_af %}
+                    {% for ator in var_atores %}
+                    <li>{{ ator.nome_ator }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <div class=links_filmes>
+                        Ator não definido
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class=links_filmes>
+                {% if not var_af %}
+                <a href="{{ url_for('definir_ator', var_id=var_filmes.id_filme) }}">
+                    Definir Elenco
+                </a>
+                {% endif %}
+            </div>
+            <div>
+                <h3>Avaliação:</h3>
+                <ul>
+                    {% if var_ua %}
+                    <li>Nota: {{ var_aval.nota }}/5&#9733;</li>
+                    <li>Critica: {{ var_aval.critica }}</li>
+                    {% else %}
+                    <div class="links_filmes">
+                        Avaliação não definida
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="links_filmes">
+                {% if not var_ua %}
+                <a href="{{ url_for('avaliar_filme', var_id=var_filmes.id_filme, var_u=var_user.id_usuario) }}">
+                    Deixar Avaliação
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock conteudo %}

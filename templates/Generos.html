@@ -1,10 +1,12 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Gêneros{% endblock titulo %}
 
 {% block conteudo %}
-<div class="genero">
-    <div class="genero_titulo">
-        <h1>Generos</h1>
-        <a href="{{url_for('cadastro_genero')}}">Adicionar Genero</a>
+<div class="links">
+    <div class="link_titulo">
+        <h1>Gêneros</h1>
+        <a href="{{url_for('cadastro_genero')}}">Adicionar Gênero</a>
     </div>
 </div>
 <div class="escolha">

@@ -1,4 +1,6 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Cadastrar Filme{% endblock titulo %}
 
 {% block conteudo %}
 <div class="formulario">
@@ -18,10 +20,6 @@
                 <textarea name="form_descricao" placeholder="Descreva o filme" rows="5" required></textarea>
             </label>
             <label>
-                Trailer (URL):
-                <input type="text" name="form_trailer" placeholder="Link do trailer">
-            </label>
-            <label>
                 Imagem (URL):
                 <input type="text" name="form_imagem" placeholder="Link do imagem">
             </label>
@@ -30,8 +28,8 @@
                 <input type="text" name="form_lancamento" placeholder="Ex: XX/XX(ou nome do mes)/XXXX" required>
             </label>
             <div class="botoes">
-                <button type="reset">Limpar</button>
-                <button type="submit">Cadastrar</button>
+                <button type="reset" class="botao_input_style">Limpar</button>
+                <button type="submit" class="botao_input_style">Cadastrar</button>
             </div>
         </form>
     </div>

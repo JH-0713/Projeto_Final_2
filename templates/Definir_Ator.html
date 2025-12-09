@@ -1,4 +1,6 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Definir Ator/Elenco{% endblock titulo %}
 
 {% block conteudo %}
 
@@ -14,7 +16,7 @@
                 </label>
                 {% endfor %}
                 <div class="botoes">
-                    <button type="submit" class="botao_input_style">Cadastrar</button>
+                    <button type="submit" class="botao_input_style">Definir</button>
                     <a href="{{url_for('cadastro_ator')}}" class="botao_input_style">Adicionar Ator</a>
                 </div>
             </div>

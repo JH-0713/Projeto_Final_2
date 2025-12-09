@@ -1,21 +1,18 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Detalhar Diretor{% endblock titulo %}
 
 {% block conteudo %}
-<div class="formulario">
-    <div class="fundo_formulario">
-        <form class="form_cadastro" action="{{url_for('cadastro_diretor')}}" method="post">
-            <div class="form_cadastro_title">
-                <h1>Cadastrar Diretor:</h1>
-                <label>
-                    Nome do Diretor:
-                    <input type="text" name="form_nome_diretor" placeholder="Digite o Nome do Diretor" required>
-                </label>
-                <div class="botoes">
-                    <button type="submit" class="botao_input_style">Cadastrar</button>
-                    <button type="reset" class="botao_input_style">Limpar</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="link_titulo">
+    <h1>Diretor: {{var_diretores.nome_diretor}}</h1>
 </div>
+
+<div class="cards">
+    {% for filme in var_filmes %}
+    <div class="filmes_cadastrado">
+        <a href="{{url_for('info_filme', var_id = filme.id_filme)}}"><img src="{{filme.imagem}}" alt="{{filme.nome_filme}}" width="245px" height="130px"></a>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock conteudo %}

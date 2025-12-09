@@ -1,25 +1,23 @@
-{% extends "base_pag.html" %}
+{% extends "Base_Pag.html" %}
+
+{% block titulo %}Definir Gênero(s){% endblock titulo %}
 
 {% block conteudo %}
 
 <div class="formulario">
     <div class="fundo_formulario">
-        <form class="form_cadastro" action="{{url_for('definir_genero', var_id = var_id_f)}}" method="post">
+        <form class="form_cadastro" action="{{ url_for('definir_genero', var_id=var_id_f) }}" method="post">
             <div class="form_cadastro_title">
-                <div>
-                    <h1>Definir Genero:</h1>
-                </div>
+                <h1>Definir Gênero:</h1>
                 {% for genero in var_generos %}
-                <div class="checagem">
-                    <label>
-                        <input type="checkbox" name="form_genero">
-                        {{genero.nome_genero}}
-                    </label>
-                </div>
+                <label>
+                    <input type="checkbox" name="form_genero" value="{{ genero.id_genero }}">
+                    {{ genero.nome_genero }}
+                </label>
                 {% endfor %}
                 <div class="botoes">
-                    <button type="submit">Cadastrar</button>
-                    <button type="reset">Limpar</button>
+                    <button type="submit" class="botao_input_style">Definir</button>
+                    <a href="{{url_for('cadastro_genero')}}" class="botao_input_style">Adicionar Gênero</a>
                 </div>
             </div>
         </form>
