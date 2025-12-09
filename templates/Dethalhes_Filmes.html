@@ -9,24 +9,24 @@
     </div>
     <div class="descricao">
         <div>
-            <h3>Nome:</h3>
+            <h3>Nome</h3>
             <ul>
                 <li>{{var_filmes.titulo}}</li>
             </ul>
-            <h3>Tempo de Duração:</h3>
+            <h3>Tempo de Duração</h3>
             <ul>
                 <li>{{var_filmes.tempo_duracao_min}}</li>
             </ul>
-            <h3>Descrição:</h3>
+            <h3>Descrição</h3>
             <ul>
                 <li>{{var_filmes.descricao}}</li>
             </ul>
-            <h3>Data de Lançamento:</h3>
+            <h3>Data de Lançamento</h3>
             <ul>
                 <li>{{var_filmes.data_lancamento}}</li>
             </ul>
             <div>
-                <h3>Gêneros:</h3>
+                <h3>Gêneros</h3>
                 <ul>
                     {% if var_gf %}
                     {% for genero in var_generos %}
@@ -47,7 +47,7 @@
                 {% endif %}
             </div>
             <div>
-                <h3>Diretor:</h3>
+                <h3>Diretor</h3>
                 <ul>
                     {% if var_df %}
                     {% for diretor in var_diretores %}
@@ -68,7 +68,7 @@
                 {% endif %}
             </div>
             <div>
-                <h3>Elenco:</h3>
+                <h3>Elenco</h3>
                 <ul>
                     {% if var_af %}
                     {% for ator in var_atores %}
@@ -89,7 +89,7 @@
                 {% endif %}
             </div>
             <div>
-                <h3>Avaliação:</h3>
+                <h3>Avaliação</h3>
                 <ul>
                     {% if var_ua %}
                     <li>Nota: {{ var_aval.nota }}/5&#9733;</li>
