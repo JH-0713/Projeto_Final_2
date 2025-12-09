@@ -122,7 +122,7 @@ def info_filme(var_id):
         resultado_f = db_session.execute(detalhes_filme).scalar_one_or_none()
 
         detalhes_user = select(Usuario)
-        var_user = db_session.execute(detalhes_user).scalar_one_or_none()
+        var_user = db_session.execute(detalhes_user).scalars().first()
 
         sql_generos_filme = select(Genero).join(Genero_Filme, Genero.id_genero == Genero_Filme.tipo_genero).where(
             Genero_Filme.classe_filme == var_id)
@@ -141,7 +141,7 @@ def info_filme(var_id):
         var_af = db_session.execute(sql_atores_filme).first()
 
         detalhes_aval = select(Avaliacao).where(Avaliacao.movie == var_id)
-        resultado_a = db_session.execute(detalhes_aval).scalar_one_or_none()
+        resultado_a = db_session.execute(detalhes_aval).scalars().first()
         sql_avaliacao_filme = select(Usuario).join(Avaliacao, Usuario.id_usuario == Avaliacao.usuario_id).where(
             Avaliacao.movie == var_id)
         var_ua = db_session.execute(sql_avaliacao_filme).scalars().all()

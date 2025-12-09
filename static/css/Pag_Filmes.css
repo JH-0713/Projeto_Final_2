@@ -176,7 +176,12 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.fundo_formulario h1 {
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fundo_formulario:hover {
