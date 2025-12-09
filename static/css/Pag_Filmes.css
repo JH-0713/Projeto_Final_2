@@ -51,6 +51,39 @@ body {
     color: #ff4d4d;
     transform: scale(1.05);
 }
+
+
+
+.link_cad {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: black;
+    font-size: 25px;
+
+
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 15px #ff1a1a,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
+}
+
+.link_cad a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.link_cad a:hover {
+    color: rgba(255, 77, 77, 0.8);
+}
+
+
+
 /*barra de pesquisa*/
 .pesquisa {
     display: flex;
@@ -95,6 +128,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+
 
 .barra {
     border: none;
@@ -196,7 +231,7 @@ form input:focus, form textarea:focus {
     background: rgba(0, 0, 0, 0.5);
 }
 
-form select {
+form select{
     padding: 5px;
     margin: 8px;
     border: none;
@@ -380,6 +415,20 @@ button:hover {
         0 0 5px #ff4d4d,
         0 0 10px #ff4d4d,
         0 0 30px #ff0000;
+}
+
+.result_p{
+    display: flex;
+    margin: 10px 0 5px 0;
+    color: black;
+    text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 30px #ff0000;
+}
+
+.result_p h2{
+    margin: 10px;
 }
 
 .detalhes_filme ul {

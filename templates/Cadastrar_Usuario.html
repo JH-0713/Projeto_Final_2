@@ -6,7 +6,7 @@
 <div>
     <form class="form_cadastro" action="{{url_for('cadastrar_user')}}" method="post">
         <div class="form_cadastro_title">
-            <h1>Cadastrar usuario:</h1>
+            <h1>Cadastrar usuario</h1>
             <label for="input_name">Nome</label>
             <input id="input_name" type="text" name="form_nome" placeholder="Digite seu nome" required>
 
@@ -16,10 +16,8 @@
             <label for="input_senha">Senha</label>
             <input id="input_senha" type="password" name="form_senha" placeholder="Digite sua senha" required>
             <div class="botoes">
-                <a href="{{url_for('logar_usuario')}}" class="botao_input_style">
-                    Login
-                </a>
-                <button type="submit" class="botao_input_style">Cadastrar</button>
+                <a href="{{url_for('logar_usuario')}}" class="btn_link">Logar</a>
+                <button type="submit">Cadastrar</button>
             </div>
         </div>
     </form>

@@ -7,19 +7,17 @@
     <form class="form_cadastro" action="{{url_for('logar_usuario')}}" method="post">
         <div class="form_cadastro_title">
             <h1>Login de usuario</h1>
-            <label>
+            <label for="email">
                 E-mail
-                <input type="email" name="email_log" placeholder="Digite seu email" required>
             </label>
-            <label>
+            <input id="email" type="email" name="email_log" placeholder="Digite seu email" required>
+            <label for="senha">
                 Senha
-                <input type="password" name="senha_log" placeholder="Digite sua senha" required>
             </label>
+            <input id="senha" type="password" name="senha_log" placeholder="Digite sua senha" required>
             <div class="botoes">
-                <a href="{{url_for('cadastrar_user')}}" class="botao_input_style">
-                    Cadastrar
-                </a>
-                <button type="submit" class="botao_input_style">Logar</button>
+                <a href="{{url_for('cadastrar_user')}}" class="btn_link">Cadastrar</a>
+                <button type="submit">Logar</button>
             </div>
         </div>
     </form>

@@ -8,23 +8,23 @@
         <h2>Cadastrar Filme</h2>
         <form action="{{url_for('cadastrar_filme')}}" method="post">
             <label>
-                Título:
+                Título
                 <input type="text" name="form_titulo" placeholder="Título do filme" required>
             </label>
             <label>
-                Tempo de Duração:
+                Tempo de Duração
                 <input type="text" name="form_duracao" placeholder="Ex: 2h 15min" required>
             </label>
             <label>
-                Descrição:
+                Descrição
                 <textarea name="form_descricao" placeholder="Descreva o filme" rows="5" required></textarea>
             </label>
             <label>
-                Imagem (URL):
+                Imagem (URL)
                 <input type="text" name="form_imagem" placeholder="Link do imagem">
             </label>
             <label>
-                Data de Lançamento:
+                Data de Lançamento
                 <input type="text" name="form_lancamento" placeholder="Ex: XX/XX(ou nome do mes)/XXXX" required>
             </label>
             <div class="botoes">

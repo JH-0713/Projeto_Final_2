@@ -3,6 +3,9 @@
 {% block titulo %}Filmes{% endblock titulo %}
 
 {% block conteudo %}
+<div class="link_cad">
+<a href="{{url_for('cadastrar_filme')}}">Cadastrar filme</a>
+    </div>
 <div class="cards">
     {% for filme in var_filmes %}
     <div class="filmes_cadastrado">

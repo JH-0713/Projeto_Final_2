@@ -3,9 +3,9 @@
 {% block titulo %}Resultado da Pesquisa{% endblock titulo %}
 
 {% block conteudo %}
-
-<h2>Resultados da pesquisa por: "{{ termo }}"</h2>
-
+<div class="result_p">
+    <h2>Resultados da pesquisa por: "{{ termo }}"</h2>
+</div>
 {% if var_filmes %}
 {% for filme in var_filmes %}
 <div class="cards">
@@ -23,6 +23,6 @@
 <p>Nenhum filme encontrado.</p>
 {% endif %}
 <div class=links_filmes>
-<a href="{{ url_for('listar_filmes') }}">Voltar</a>
+    <a href="{{ url_for('listar_filmes') }}">Voltar</a>
 </div>
 {% endblock %}
